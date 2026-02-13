@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Lock, Unlock, Info } from 'lucide-react';
 import { ParameterType, InputValues, LockedParameters, Unit } from '../utils/types';
-import { convertUnit, formatNumber } from '../utils/unitConversion';
+import { convertUnit } from '../utils/unitConversion';
 import UnitSelector from './UnitSelector';
 
 interface InputPanelProps {

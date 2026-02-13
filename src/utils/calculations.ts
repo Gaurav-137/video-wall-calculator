@@ -141,50 +141,6 @@ export function calculateConfigurations(input: CalculationInput): ConfigurationR
 }
 
 /**
- * Get target value based on primary selected parameter
- */
-function getTargetValue(
-  selectedParams: string[],
-  values: any,
-  unit: string
-): number | null {
-  if (selectedParams.includes('height') && values.height) {
-    return toMillimeters(values.height, unit as any);
-  }
-  if (selectedParams.includes('width') && values.width) {
-    return toMillimeters(values.width, unit as any);
-  }
-  if (selectedParams.includes('diagonal') && values.diagonal) {
-    return toMillimeters(values.diagonal, unit as any);
-  }
-  return null;
-}
-
-/**
- * Find exact match or closest match index
- */
-function findExactOrClosestMatch(
-  scoredConfigs: any[],
-  target: number | null,
-  selectedParams: string[]
-): number {
-  if (!target) return 0;
-
-  for (let i = 0; i < scoredConfigs.length; i++) {
-    const config = scoredConfigs[i].config;
-
-    if (selectedParams.includes('height') && Math.abs(config.heightMm - target) < 1) {
-      return i;
-    }
-    if (selectedParams.includes('width') && Math.abs(config.widthMm - target) < 1) {
-      return i;
-    }
-  }
-
-  return 0; // Return best match if no exact match
-}
-
-/**
  * Calculate implied parameters based on two selected parameters
  */
 export function calculateImpliedValues(
